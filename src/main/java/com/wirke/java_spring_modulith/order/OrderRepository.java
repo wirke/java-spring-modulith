@@ -6,5 +6,5 @@ import org.springframework.data.repository.CrudRepository;
 
 public interface OrderRepository extends CrudRepository<Order, Long> {
     
-    Optional<Order> findByOrderIdentifier(String orderIdentifier);
+    Optional<Order> getOrderIdentifier(String orderIdentifier);
 }
