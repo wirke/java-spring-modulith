@@ -11,3 +11,6 @@ services:
     
     volumes:
       - /c/tmp/spring_modulith:/var/lib/mysql
+
+volumes:
+  mysql:
