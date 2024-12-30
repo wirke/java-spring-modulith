@@ -1,9 +1,13 @@
 services:
-  postgres:
-    image: 'postgres:latest'
+  mysql:
+    image: 'mysql:latest'
     environment:
-      - 'POSTGRES_DB=mydatabase'
-      - 'POSTGRES_PASSWORD=secret'
-      - 'POSTGRES_USER=myuser'
+      - 'MYSQL_DATABASE=spring_modulith'
+      - 'MYSQL_PASSWORD=spring_modulith'
+      - 'MYSQL_ROOT_PASSWORD=1234'
+      - 'MYSQL_USER=myuser'
     ports:
-      - '5432'
+      - "3307:3306"
+    
+    volumes:
+      - /c/tmp/spring_modulith:/var/lib/mysql
