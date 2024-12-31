@@ -7,6 +7,3 @@ spring:
     sql:
         init:
             mode: never
-    
-    modulith:
-        repubish-outstanding-events-on-restart: false
