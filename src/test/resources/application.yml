@@ -1,0 +1,14 @@
+spring:
+    datasource:
+        username: postgres
+        password: 1234
+        url: jdbc:postgresql://localhost:5432/spring_modulith
+    
+    docker:
+        compose:
+            skip:
+                in-tests: false
+
+logging:
+    level:
+        org.springframework.modulith: DEBUG

@@ -1,13 +1,14 @@
 package com.wirke.java_spring_modulith;
 
 import org.junit.jupiter.api.Test;
-import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.modulith.test.ApplicationModuleTest;
+import org.springframework.modulith.core.ApplicationModules;
 
-@SpringBootTest
+@ApplicationModuleTest
 class JavaSpringModulithApplicationTests {
 
-	@Test
-	void contextLoads() {
-	}
-
+    @Test
+    void contextLoads() {
+        ApplicationModules.of(JavaSpringModulithApplication.class).verify();
+    }
 }
