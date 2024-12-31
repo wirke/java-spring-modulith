@@ -28,6 +28,6 @@ public class Order {
     private String orderIdentifier;
     private String customerName;
     private String customerEmail;
-    private Timestamp orderDate = new Timestamp(Instant.now().toEpochMilli());
+    private Timestamp orderDate = Timestamp.from(Instant.now());
     private Status status = Status.OPEN;
 }
