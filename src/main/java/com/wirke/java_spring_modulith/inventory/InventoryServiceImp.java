@@ -2,16 +2,18 @@ package com.wirke.java_spring_modulith.inventory;
 
 import java.util.List;
 
+import org.springframework.stereotype.Service;
+
 import com.wirke.java_spring_modulith.inventory.exposed.InventoryDto;
 import com.wirke.java_spring_modulith.inventory.exposed.InventoryService;
 
+import lombok.RequiredArgsConstructor;
+
+@Service
+@RequiredArgsConstructor
 class InventoryServiceImp implements InventoryService{
 
     private final InventoryRepository inventoryRepository;
-
-    public InventoryServiceImp(InventoryRepository inventoryRepository) {
-        this.inventoryRepository = inventoryRepository;
-    }
 
     @Override
     public InventoryDto fetchInventoryByName(String name) {
