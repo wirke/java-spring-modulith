@@ -4,4 +4,4 @@ import java.util.List;
 
 public record OrderDto (String customerName,
                         String CustomerEmail,
-                        List<InventoryRequestDto> InventoryRequestDtoList){}
+                        List<InventoryRequestDto> inventoryRequestDtoList){}

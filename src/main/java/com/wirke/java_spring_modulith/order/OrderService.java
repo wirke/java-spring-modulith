@@ -28,7 +28,7 @@ public class OrderService {
 
     public OrderResponseDto createOrder(OrderDto orderDto) {
         
-        List<String> inventoryNames = orderDto.InventoryRequestDtoList()
+        List<String> inventoryNames = orderDto.inventoryRequestDtoList()
             .stream()
             .map(InventoryRequestDto::inventoryName)
             .toList();
@@ -48,7 +48,7 @@ public class OrderService {
 
         inventories.forEach(inventoryDto -> {
             OrderInventory orderInventory = new OrderInventory();
-            InventoryRequestDto inventoryRequestDto = getInventoryRequestDtoByName(inventoryDto.name(), orderDto.InventoryRequestDtoList());
+            InventoryRequestDto inventoryRequestDto = getInventoryRequestDtoByName(inventoryDto.name(), orderDto.inventoryRequestDtoList());
             orderInventory.setInventoryId(inventoryDto.id());
             orderInventory.setQty(inventoryRequestDto.qty());
             long totalPrice = inventoryDto.price() * inventoryRequestDto.qty();
