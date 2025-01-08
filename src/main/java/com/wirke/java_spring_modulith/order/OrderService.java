@@ -11,6 +11,7 @@ import com.wirke.java_spring_modulith.inventory.exposed.InventoryDto;
 import com.wirke.java_spring_modulith.inventory.exposed.InventoryService;
 import com.wirke.java_spring_modulith.order.dto.InventoryRequestDto;
 import com.wirke.java_spring_modulith.order.dto.OrderDto;
+import com.wirke.java_spring_modulith.order.dto.OrderPaymentDto;
 import com.wirke.java_spring_modulith.order.dto.OrderResponseDto;
 import com.wirke.java_spring_modulith.order.type.Status;
 
@@ -25,6 +26,7 @@ public class OrderService {
     private final InventoryService inventoryService;
     private final OrderRepository orderRepository;
     private final OrderInventoryRepository orderInventoryRepository;
+    private final OrderEventService orderEventService;
 
     public OrderResponseDto createOrder(OrderDto orderDto) {
         
@@ -38,6 +40,9 @@ public class OrderService {
         final AtomicLong amount = new AtomicLong();
         log.info("Order created: {}", order);
         buildAndPersistOrderInventory(orderDto, inventories, order.getId(), amount);
+
+        OrderPaymentDto orderPaymentDto = new OrderPaymentDto(order.getOrderIdentifier(), amount.get());
+        orderEventService.completeOrder(orderPaymentDto);
 
         return new OrderResponseDto("Order currently processed", 102);
     }
